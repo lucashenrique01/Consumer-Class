@@ -7,8 +7,10 @@ namespace ConsumerApp
     { 
         static void Main(string[] args)
         {
-            string topicName = BrokerContext.getTopic();
-            ConsumerController.ConsumerTopic(topicName);
+            BrokerContext brokerContext = new BrokerContext();
+            string topicName = brokerContext.getTopic();
+            ConsumerController consumerController = new ConsumerController();
+            consumerController.ConsumerTopic(topicName);
         }
     }
 }

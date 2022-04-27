@@ -5,8 +5,9 @@ using MySqlConnector;
 
 namespace EventDaoNamespace{
     class EventDAO{
-        public static async void insertEvent(Event novoEvento){
-            var builder = Mysql.conection();
+        Mysql mysql = new Mysql();
+        public async void insertEvent(Event novoEvento){            
+            var builder = mysql.conection();
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
                 Console.WriteLine("Opening connection");
@@ -16,25 +17,26 @@ namespace EventDaoNamespace{
                 {
                     command.CommandText = @"INSERT INTO event (IdEvent, SpecVersion, Source, Type, Subject, Time, CorrelationID, DataContentType, Data) VALUES 
                     (@IdEvent, @SpecVersion, @Source, @Type, @Subject, @Time, @CorrelationID, @DataContentType, @Data);";
-                    command.Parameters.AddWithValue("@IdEvent", novoEvento.Id);
-                    command.Parameters.AddWithValue("@SpecVersion", novoEvento.SpecVersion);
-                    command.Parameters.AddWithValue("@Source", novoEvento.Source);
-                    command.Parameters.AddWithValue("@Type", novoEvento.Type);
-                    command.Parameters.AddWithValue("@Subject", novoEvento.Subject);
-                    command.Parameters.AddWithValue("@Time", novoEvento.Time);
-                    command.Parameters.AddWithValue("@CorrelationID", novoEvento.CorrelationID);
-                    command.Parameters.AddWithValue("@DataContentType", novoEvento.DataContentType);
-                    command.Parameters.AddWithValue("@Data", novoEvento.Data);           
-                    await command.ExecuteNonQueryAsync();                           
+                    command.Parameters.AddWithValue("@IdEvent", novoEvento.getId());
+                    command.Parameters.AddWithValue("@SpecVersion", novoEvento.getSpecVersion());
+                    command.Parameters.AddWithValue("@Source", novoEvento.getSource());
+                    command.Parameters.AddWithValue("@Type", novoEvento.getType());
+                    command.Parameters.AddWithValue("@Subject", novoEvento.getSubject());
+                    command.Parameters.AddWithValue("@Time", novoEvento.getTime());
+                    command.Parameters.AddWithValue("@CorrelationID", novoEvento.getCorrelationID());
+                    command.Parameters.AddWithValue("@DataContentType", novoEvento.getDataContentType());
+                    command.Parameters.AddWithValue("@Data", novoEvento.getData());           
+                    await command.ExecuteNonQueryAsync();
+                    Console.WriteLine("Um evento gravado");                           
                 }
                 Console.WriteLine("Closing connection");
             }
             Console.ReadLine();
         }
 
-        public static async void existById(string id, Event novoEvento){
+        public async void existById(string id, Event novoEvento){
             int count = 0;
-            var builder = Mysql.conection();
+            var builder = mysql.conection();
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
                 Console.WriteLine("Opening connection");
@@ -54,7 +56,6 @@ namespace EventDaoNamespace{
                                 count++;
                         }
                     }
-
                 }
                 Console.WriteLine("Closing connection");
                 if(!exists(count)){
@@ -66,8 +67,9 @@ namespace EventDaoNamespace{
             Console.ReadLine();
         }
 
-        public static Boolean exists(int count){
-            if(count > 0){
+        public Boolean exists(int count){
+            if(count > 0)
+            {
                 return true;
             } else
             {

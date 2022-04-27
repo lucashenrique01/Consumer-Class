@@ -5,7 +5,7 @@ namespace BrokerContextNamespace
 {
     class BrokerContext
     {
-        public static string getTopic()
+        public string getTopic()
         {
             string topicName;
 
@@ -20,7 +20,7 @@ namespace BrokerContextNamespace
             return topicName;
         }
 
-        public static string getBroker()
+        public string getBroker()
         {
             string bootstrapServers;
 
@@ -35,10 +35,11 @@ namespace BrokerContextNamespace
 
             return bootstrapServers;
         }
-        public static ConsumerConfig ConfigConsumer()
-        {
-            String topicName = getTopic();
-            String bootstrapServers = getBroker();
+        public ConsumerConfig ConfigConsumer()
+        {   
+            BrokerContext brokerContext = new BrokerContext();
+            string topicName = brokerContext.getTopic();
+            string bootstrapServers = brokerContext.getBroker();
             var config = new ConsumerConfig
             {
                 BootstrapServers = bootstrapServers,

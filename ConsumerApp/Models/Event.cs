@@ -1,15 +1,15 @@
 namespace EventNamespace
 {
     public class Event {
-        public string Id {get; set;}
-        public string SpecVersion {get; set;}
-        public string Source {get; set;}
-        public string Type {get;set;}
-        public string Subject {get;set;}
-        public string Time {get;set;}
-        public string CorrelationID {get;set;}
-        public string DataContentType {get;set;}
-        public string Data {get;set;}
+        private string Id {get; set;}
+        private string SpecVersion {get; set;}
+        private string Source {get; set;}
+        private string Type {get;set;}
+        private string Subject {get;set;}
+        private string Time {get;set;}
+        private string CorrelationID {get;set;}
+        private string DataContentType {get;set;}
+        private string Data {get;set;}
 
         public Event(string id, string specVersion, string source, string type, string subject, string time, string correlationid,
         string datacontentype, string data)
@@ -23,12 +23,34 @@ namespace EventNamespace
             this.CorrelationID=correlationid;
             this.DataContentType=datacontentype;
             this.Data=data;
+        }     
+        
+        public string getId(){
+            return this.Id;
         }
-
-        public override string ToString()
-        {
-            return "Id: " + Id + "Data" + Data;
+        public string getSpecVersion(){
+            return this.SpecVersion;
         }
-
+        public string getSource(){
+            return this.Source;
+        }
+        public string getType(){
+            return this.Type;
+        }
+        public string getSubject(){
+            return this.Subject;
+        }
+        public string getTime(){
+            return this.Time;
+        }
+        public string getCorrelationID(){
+            return this.CorrelationID;
+        }
+        public string getDataContentType(){
+            return this.DataContentType;
+        }
+        public string getData(){
+            return this.Data;
+        }
     }
 }

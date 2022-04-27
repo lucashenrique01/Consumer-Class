@@ -8,9 +8,12 @@ using ConsumerServiceNamespace;
 namespace ConsumerControllerNamespace
 {   
     class ConsumerController {
-        public static void ConsumerTopic(string topicName){
+        
+        EventService eventService = new EventService();
+        public void ConsumerTopic(string topicName){
 
-            string bootstrapServers = BrokerContext.getBroker();
+            BrokerContext brokerContext = new BrokerContext();
+            string bootstrapServers = brokerContext.getBroker();
 
             var logger = new LoggerConfiguration()
                 .WriteTo.Console()
@@ -27,7 +30,7 @@ namespace ConsumerControllerNamespace
 
             try
             {
-                using (var consumer = new ConsumerBuilder<Ignore, string>(BrokerContext.ConfigConsumer()).Build())
+                using (var consumer = new ConsumerBuilder<Ignore, string>(brokerContext.ConfigConsumer()).Build())
                 {
                     consumer.Subscribe(topicName);
 
@@ -39,7 +42,7 @@ namespace ConsumerControllerNamespace
                             logger.Information(
                                 $"Mensagem lida: {cr.Message.Value}");
                             string eventoString = cr.Message.Value.ToString();                            
-                            EventService.convertEvent(eventoString);
+                            eventService.convertEvent(eventoString);
                         }
                     }
                     catch (OperationCanceledException)
