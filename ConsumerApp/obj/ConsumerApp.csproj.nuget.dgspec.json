@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Buiu\\Desktop\\SERAQUEAGORAVAI\\ConsumerApp\\ConsumerApp.csproj": {}
+    "C:\\Users\\Buiu\\Desktop\\Consumer-Class\\ConsumerApp\\ConsumerApp.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Buiu\\Desktop\\SERAQUEAGORAVAI\\ConsumerApp\\ConsumerApp.csproj": {
+    "C:\\Users\\Buiu\\Desktop\\Consumer-Class\\ConsumerApp\\ConsumerApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Buiu\\Desktop\\SERAQUEAGORAVAI\\ConsumerApp\\ConsumerApp.csproj",
+        "projectUniqueName": "C:\\Users\\Buiu\\Desktop\\Consumer-Class\\ConsumerApp\\ConsumerApp.csproj",
         "projectName": "ConsumerApp",
-        "projectPath": "c:\\Users\\Buiu\\Desktop\\SERAQUEAGORAVAI\\ConsumerApp\\ConsumerApp.csproj",
+        "projectPath": "C:\\Users\\Buiu\\Desktop\\Consumer-Class\\ConsumerApp\\ConsumerApp.csproj",
         "packagesPath": "C:\\Users\\Buiu\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Buiu\\Desktop\\SERAQUEAGORAVAI\\ConsumerApp\\obj\\",
+        "outputPath": "C:\\Users\\Buiu\\Desktop\\Consumer-Class\\ConsumerApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Buiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,18 @@
             "Confluent.Kafka": {
               "target": "Package",
               "version": "[1.4.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.28, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.1.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",
