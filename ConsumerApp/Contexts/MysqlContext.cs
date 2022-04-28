@@ -30,20 +30,20 @@ namespace MysqlContext
 
         public string getPassword(){
             string password;
-            if (Environment.GetEnvironmentVariable("MYSQL_PASSW") != null)
+            if (Environment.GetEnvironmentVariable("MYSQL_PASSWORD") != null)
             {
-                password = Environment.GetEnvironmentVariable("MYSQL_PASSW");
+                password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
             } else {
-                return password = "admin";
+                return password = "password";
             }
             return password;
         }
 
         public string getDatabase(){
             string database;
-            if (Environment.GetEnvironmentVariable("MYSQL_DATAB") != null)
+            if (Environment.GetEnvironmentVariable("MYSQL_DATABASE") != null)
             {
-                database = Environment.GetEnvironmentVariable("MYSQL_DATAB");
+                database = Environment.GetEnvironmentVariable("MYSQL_DATABASE");
             } else {
                 return database = "event";
             }
