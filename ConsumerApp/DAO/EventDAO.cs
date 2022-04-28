@@ -15,16 +15,6 @@ namespace EventDaoNamespace{
 
                  using (var command = conn.CreateCommand())
                 {
-
-                    command.CommandText = "DROP TABLE IF EXISTS event;";
-                    await command.ExecuteNonQueryAsync();
-                    Console.WriteLine("Finished dropping table (if existed)");
-
-                    command.CommandText = "CREATE TABLE event (Id serial PRIMARY KEY auto_increment, IdEvent VARCHAR(50), SpecVersion VARCHAR(50), Source VARCHAR(50), Type VARCHAR(50), Subject VARCHAR(50), Time VARCHAR(50), CorrelationID VARCHAR(50), DataContentType VARCHAR(50), Data VARCHAR(50));";
-                    await command.ExecuteNonQueryAsync();
-                    Console.WriteLine("Finished creating table");
-
-
                     command.CommandText = @"INSERT INTO event (IdEvent, SpecVersion, Source, Type, Subject, Time, CorrelationID, DataContentType, Data) VALUES 
                     (@IdEvent, @SpecVersion, @Source, @Type, @Subject, @Time, @CorrelationID, @DataContentType, @Data);";
                     command.Parameters.AddWithValue("@IdEvent", novoEvento.getId());
@@ -54,6 +44,14 @@ namespace EventDaoNamespace{
 
                  using (var command = conn.CreateCommand())
                 {
+                    command.CommandText = "DROP TABLE IF EXISTS event;";
+                    await command.ExecuteNonQueryAsync();
+                    Console.WriteLine("Finished dropping table (if existed)");
+
+                    command.CommandText = "CREATE TABLE event (Id serial PRIMARY KEY auto_increment, IdEvent VARCHAR(50), SpecVersion VARCHAR(50), Source VARCHAR(50), Type VARCHAR(50), Subject VARCHAR(50), Time VARCHAR(50), CorrelationID VARCHAR(50), DataContentType VARCHAR(50), Data VARCHAR(50));";
+                    await command.ExecuteNonQueryAsync();
+                    Console.WriteLine("Finished creating table");
+                    
                     command.CommandText = @"SELECT * FROM event where IdEvent = @id";
                     command.Parameters.AddWithValue("@id", id);
                     using (var reader = await command.ExecuteReaderAsync())
