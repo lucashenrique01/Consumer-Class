@@ -90,7 +90,7 @@ services:
       - "3306:3306"
 
   consumer-dotnet:
-    image: lucashenrique01/consumer-image:2.0
+    image: lucashenrique01/consumer-image:2.1
     depends_on:
       - broker
       - db
