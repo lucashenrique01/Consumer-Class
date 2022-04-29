@@ -45,7 +45,8 @@ To run this application you just need to open your terminal, go to the project d
 ## Recursos
 
 
-For now, this class only has the function of listening to a specific topic and returning all new messages that arrive at the broker.
+This class has the function of listening to a specific topic and returning all new messages that arrive at the broker.
+After to receive a message it is persisted in MySQL database and we have a function to check if this message exists in database. Case it exists it is only ignored, case not it is persisted. Thus ensuring the idempotence of the event
 
 And to do that you enter the **broker address** and the **topic name** through environment variables.
 
